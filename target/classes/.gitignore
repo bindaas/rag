@@ -1,0 +1,13 @@
+# Lucene index — large binary files, rebuilt automatically
+lucene-index/
+
+# Maven build output
+target/
+
+# macOS junk
+.DS_Store
+
+# IDE files
+.idea/
+*.iml
+.vscode/
