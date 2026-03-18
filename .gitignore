@@ -1,3 +1,5 @@
 lucene-index/
 target/
 .DS_Store
+data/
+conversations/
