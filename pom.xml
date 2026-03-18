@@ -9,14 +9,34 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.3</version>
+    </parent>
+
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.release>21</maven.compiler.release>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lucene.version>9.10.0</lucene.version>
     </properties>
 
     <dependencies>
+        <!-- Spring Boot Web: REST controllers, embedded Tomcat, Jackson -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Springdoc OpenAPI: Swagger UI at /swagger-ui.html -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
         <!-- Lucene core: indexing, KnnFloatVectorField, HNSW vector search -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -24,28 +44,29 @@
             <version>${lucene.version}</version>
         </dependency>
 
-        <!-- Lucene standard analyzer: tokenization (still needed for IndexWriterConfig) -->
+        <!-- Lucene standard analyzer: tokenization for IndexWriterConfig -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analysis-common</artifactId>
             <version>${lucene.version}</version>
         </dependency>
 
-        <!-- Jackson: JSON serialization for Anthropic + Voyage API calls -->
+        <!-- Spring Boot Test: JUnit 5 + MockMvc + Spring context -->
+        <!-- No separate Mockito needed — we use a real HttpClient subclass in tests -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.17.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
+
 </project>
