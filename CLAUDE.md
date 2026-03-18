@@ -161,3 +161,10 @@ startup if either is missing.
 - Do not put `RagApp.java` in the default package
 - Do not hardcode API keys — always use environment variables
 - Do not commit `data/`, `lucene-index/`, `conversations/`, or `target/`
+
+## Development workflow
+- **Always update `README.md`** when making significant changes — new endpoints,
+  changed run commands, new dependencies, new environment variables, or anything
+  a developer cloning the repo would need to know.
+- **Always update `CLAUDE.md`** when adding new design decisions, gotchas, or
+  architectural changes that future Claude sessions should know about.
